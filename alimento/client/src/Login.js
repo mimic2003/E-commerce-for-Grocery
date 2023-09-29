@@ -24,7 +24,7 @@ function Login() {
   };
 
   const defaultCenter = {
-    lat: 23.0362,
+    lat: 23.03621,
     lng: 72.5811
   };
 
