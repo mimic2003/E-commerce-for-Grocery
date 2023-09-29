@@ -1,0 +1,40 @@
+ import mongoose from 'mongoose'
+// const mongoose=require('mongoose');
+mongoose.connect("mongodb://127.0.0.1:27017/database").then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
+});
+
+const mySchema=new mongoose.Schema({username:{type:String,required:true},email:{type:String,required:true},mobileno:{type:Number,equired:true},address:{type:String,required:true},pass:{type:Number,required:true},confpass:{type:Number,required:true},date:{type:Date,default:new Date()}})
+const person=new mongoose.model("user",mySchema)
+
+
+
+
+
+
+
+
+
+
+
+
+
+const [formdata,setformdate]=useState({});
+    const handlechange=(event)=>{
+      const name=event.target.name
+      const value=event.target.value
+      setformdate({...formdata,[name]:value})
+    }
+    const handlesubmit=async()=>{
+      try{
+        const p1=new person({username:formdata.uname,email:formdata.ename,mobileno:formdata.phname,address:formdata.aname,pass:formdata.pname,confpass:formdata.cpname})
+        const result=await p1.save()
+        console.log("entered")
+      }
+      catch(err){
+        console.error(err)
+      }
+    }
